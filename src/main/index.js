@@ -17,7 +17,7 @@ async function main() {
         const report = await generateReport(preClient, postClient, tableName);
 
         if (report) {
-            console.log('Comparison Report:');
+            console.log('\nComparison Report:\n');
             console.log(`Missing Records: ${report.missingRecords.length}`);
             console.log(`Corrupted Records: ${report.corruptedRecords.length}`);
             console.log(`New Records: ${report.newRecords.length}`);

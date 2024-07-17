@@ -38,7 +38,7 @@ function compareTables(preData, postData, primaryKey) {
 }
 
 async function generateReport(preClient, postClient, tableName) {
-    console.log(`Comparing table: ${tableName}`);
+    console.log(`\nComparing Table Name: ${tableName}`);
     const preData = await fetchTableData(preClient, tableName);
     const postData = await fetchTableData(postClient, tableName);
 
@@ -56,7 +56,7 @@ function saveReport(report, folder, filename) {
         fs.mkdirSync(folder, { recursive: true });
     }
     fs.writeFileSync(filePath, JSON.stringify(report, null, 2), 'utf-8');
-    console.log(`Report saved to ${filePath}`);
+    console.log(`\nReport saved to ${filePath}\n`);
 }
 
 module.exports = {
