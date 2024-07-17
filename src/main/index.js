@@ -28,6 +28,8 @@ async function main() {
             console.log(`Missing Records: ${report.missingRecords.length}`);
             console.log(`Corrupted Records: ${report.corruptedRecords.length}`);
             console.log(`New Records: ${report.newRecords.length}`);
+            console.log(`Total Records in Old Database: ${report.totalPreRecords}`);
+            console.log(`Total Records in New Database: ${report.totalPostRecords}`);
 
             const folder = './output';
             const filename = 'report.json';

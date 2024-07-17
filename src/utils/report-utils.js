@@ -59,10 +59,20 @@ async function generateReport(preClient, postClient, tableName) {
         const preData = await fetchTableData(preClient, tableName);
         const postData = await fetchTableData(postClient, tableName);
 
+        // Count total records in each dataset
+        const totalPreRecords = preData.length;
+        const totalPostRecords = postData.length;
+
         // If preData has rows, assume the first column is the primary key
         if (preData.length > 0) {
             const primaryKey = Object.keys(preData[0])[0];
-            return compareTables(preData, postData, primaryKey);
+            const comparisonReport = compareTables(preData, postData, primaryKey);
+
+            return {
+                totalPreRecords,
+                totalPostRecords,
+                ...comparisonReport
+            };
         }
 
         return null; // Return null if no data fetched from preData
