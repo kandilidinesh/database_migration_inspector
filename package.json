@@ -1,5 +1,5 @@
 {
-  "name": "data-migration-comparison-tool",
+  "name": "data-migration-inspector",
   "version": "1.0.0",
   "description": "Script for comparing data between pre-migration and post-migration databases",
   "main": "index.js",

@@ -1,4 +1,4 @@
-# Data Migration Comparison Tool
+# Data Migration Inspector
 
 ## Overview
 
