@@ -59,13 +59,17 @@ npm start
 ```
 *This command will run tests using Jest and then execute the data comparison script.*
 
-## Test Cases Covered
+## Test Coverage
 
-The test suite covers the following scenarios:
+The tool includes comprehensive test coverage using Jest to ensure its functionality:
 
-1. **Database Connection**: Validates successful connection to both pre-migration and post-migration databases.
-2. **Data Comparison**: Tests the accuracy of data comparison logic, including identifying missing, corrupted, and new records.
-3. **Report Generation**: Verifies the generation of a valid JSON report (report.json) detailing discrepancies.
+- **Database Connectivity**: Ensures database connections are established without errors.
+- **Data Fetching**: Validates that data fetched from the database matches expected mock data.
+- **Data Comparison**: Verifies the correctness of data comparison logic to detect discrepancies.
+- **Report Generation**: Checks if the generated report accurately reflects data discrepancies between databases.
+- **File Handling**: Confirms that reports are saved correctly to the file system.
+
+These tests guarantee that the tool functions as intended, providing accurate insights into data discrepancies during migration processes.
 
 To run tests manually:
 ```bash
