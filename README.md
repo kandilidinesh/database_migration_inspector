@@ -75,7 +75,3 @@ The script generates a JSON report (`migration-report.json`) in the project dire
 - Assumes primary keys are intact and consistent between databases.
 - Assumes no intentional data deletion post-migration.
 - Assumes all discrepancies are due to migration issues.
-
-## License
-
-This project is licensed under the ISC License. See the LICENSE file for details.

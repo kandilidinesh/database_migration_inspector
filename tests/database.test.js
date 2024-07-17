@@ -1,10 +1,12 @@
 const { Client } = require('pg');
+const fs = require('fs');
+const path = require('path');
 const {
     fetchTableData,
     compareTables,
     generateReport,
     saveReport
-} = require('../index');
+} = require('../src/utils/reportUtils');
 
 jest.mock('pg');
 
@@ -75,12 +77,13 @@ describe('Database Operations', () => {
             newRecords: [{ id: 3, name: 'Charlie' }]
         };
         const filename = 'comparison_report.json';
+        const reportsFolder = path.join(__dirname, '../reports');
 
-        const fs = require('fs');
         jest.spyOn(fs, 'writeFileSync').mockImplementation(() => { });
 
-        saveReport(report, filename);
+        saveReport(report, reportsFolder, filename);
 
-        expect(fs.writeFileSync).toHaveBeenCalledWith(filename, JSON.stringify(report, null, 2), 'utf-8');
+        const expectedFilePath = path.join(reportsFolder, filename);
+        expect(fs.writeFileSync).toHaveBeenCalledWith(expectedFilePath, JSON.stringify(report, null, 2), 'utf-8');
     });
 });

@@ -1,11 +1,11 @@
 {
-  "name": "home_work",
+  "name": "data-migration-comparison-tool",
   "version": "1.0.0",
   "description": "Script for comparing data between pre-migration and post-migration databases",
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "start": "npm test && node index.js"
+    "start": "npm test && node ./src/index.js"
   },
   "keywords": [],
   "author": "Dinesh K N",
