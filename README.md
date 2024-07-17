@@ -21,8 +21,8 @@ This Node.js script compares data between a pre-migration and a post-migration P
 
 1. Clone the repository:
 ```bash
-     git clone https://github.com/yourusername/data-migration-comparison.git
-     cd data-migration-comparison
+     git clone https://github.com/kandilidinesh/database_migration_checker.git
+     cd database_migration_checker
 ```
 
 2. Install dependencies:
