@@ -75,7 +75,7 @@ npm test
 
 ## Output
 
-The script generates a JSON report (`report.json`) in the output directory, detailing:
+The script generates a JSON report (`report.json`) in the `output` directory, detailing:
 - Records missing in the post-migration dataset.
 - Corrupted records with data discrepancies.
 - New records introduced in the post-migration dataset.
