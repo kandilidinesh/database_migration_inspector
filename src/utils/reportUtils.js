@@ -43,7 +43,7 @@ async function generateReport(preClient, postClient, tableName) {
     const postData = await fetchTableData(postClient, tableName);
 
     if (preData.length > 0) {
-        const primaryKey = Object.keys(preData[0])[0]; // Assumes the first column is the primary key
+        const primaryKey = Object.keys(preData[0])[0]; // Assuming the first column is the primary key
         return compareTables(preData, postData, primaryKey);
     }
 
