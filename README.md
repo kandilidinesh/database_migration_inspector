@@ -23,19 +23,19 @@ This Node.js script compares data between a pre-migration and a post-migration P
 1. Pull Docker Images: Ensure you have Docker installed on your machine. Pull the necessary Docker images for both pre-migration and post-migration databases:
 
 ```bash
-docker pull <pre-migration-container>
-docker pull <post-migration-container>
+     docker pull <pre-migration-container>
+     docker pull <post-migration-container>
 ```
 
 2. Run Docker Containers:
 Start the Docker containers for the pre-migration and post-migration databases:
 
 ```bash
-# Pre-migration database
-docker run -p 5432:5432 -e POSTGRES_PASSWORD=***** <pre-migration-container>
+     # Pre-migration database
+     docker run -p 5432:5432 -e POSTGRES_PASSWORD=***** <pre-migration-container>
 
-# Post-migration database
-docker run -p 5433:5432 -e POSTGRES_PASSWORD=***** <post-migration-container>
+     # Post-migration database
+     docker run -p 5433:5432 -e POSTGRES_PASSWORD=***** <post-migration-container>
 ```
 
 ## Installation
@@ -58,7 +58,7 @@ docker run -p 5433:5432 -e POSTGRES_PASSWORD=***** <post-migration-container>
 
 Run the script to perform the comparison:
 ```bash
-  npm start
+     npm start
 ```
 
 This command will run tests using Jest and then execute the data comparison script.
@@ -74,7 +74,7 @@ The test suite covers the following scenarios:
 To run tests manually:
 
 ```bash
-npm test
+     npm test
 ```
 
 Ensure Docker containers for databases are running as described in the Docker setup section before running tests.
