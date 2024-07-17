@@ -63,9 +63,25 @@ Run the script to perform the comparison:
 
 This command will run tests using Jest and then execute the data comparison script.
 
+## Test Cases Covered
+
+The test suite covers the following scenarios:
+
+1. Database Connection: Validates successful connection to both pre-migration and post-migration databases.
+2. Data Comparison: Tests the accuracy of data comparison logic, including identifying missing, corrupted, and new records.
+3. Report Generation: Verifies the generation of a valid JSON report (report.json) detailing discrepancies.
+
+To run tests manually:
+
+```bash
+npm test
+```
+
+Ensure Docker containers for databases are running as described in the Docker setup section before running tests.
+
 ## Output
 
-The script generates a JSON report (`migration-report.json`) in the project directory, detailing:
+The script generates a JSON report (`report.json`) in the output directory, detailing:
 - Records missing in the post-migration dataset.
 - Corrupted records with data discrepancies.
 - New records introduced in the post-migration dataset.

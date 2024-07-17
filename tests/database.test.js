@@ -77,7 +77,7 @@ describe('Database Operations', () => {
             newRecords: [{ id: 3, name: 'Charlie' }]
         };
         const filename = 'comparison_report.json';
-        const reportsFolder = path.join(__dirname, '../reports');
+        const reportsFolder = path.join(__dirname, '../output');
 
         jest.spyOn(fs, 'writeFileSync').mockImplementation(() => { });
 

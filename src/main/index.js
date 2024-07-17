@@ -1,24 +1,7 @@
-const fs = require('fs');
+// src/main/dataMigrationTool.js (formerly index.js)
 const { Client } = require('pg');
-const { fetchTableData, compareTables, generateReport, saveReport } = require('./utils/reportUtils');
-
-// Connection details for original (pre-migration) database
-const preMigrationConfig = {
-    user: 'old',
-    host: 'localhost',
-    database: 'old',
-    password: 'hehehe',
-    port: 5432,
-};
-
-// Connection details for migrated (post-migration) database
-const postMigrationConfig = {
-    user: 'new',
-    host: 'localhost',
-    database: 'new',
-    password: 'hahaha',
-    port: 5433,
-};
+const { generateReport, saveReport } = require('../utils/reportUtils');
+const { preMigrationConfig, postMigrationConfig } = require('../../lib/dbConfig');
 
 async function main() {
     const preClient = new Client(preMigrationConfig);
@@ -30,7 +13,7 @@ async function main() {
         await postClient.connect();
         console.log('Connected successfully to the new database.');
 
-        const tableName = 'accounts'; // Specify the table name
+        const tableName = 'accounts';
         const report = await generateReport(preClient, postClient, tableName);
 
         if (report) {
@@ -39,9 +22,8 @@ async function main() {
             console.log(`Corrupted Records: ${report.corruptedRecords.length}`);
             console.log(`New Records: ${report.newRecords.length}`);
 
-            // Save the full report to a JSON file
-            const folder = './reports';
-            const filename = 'comparison_report.json';
+            const folder = './output';
+            const filename = 'report.json';
             saveReport(report, folder, filename);
         } else {
             console.log(`No data found in table ${tableName}.`);
@@ -55,13 +37,6 @@ async function main() {
     }
 }
 
-if (require.main === module) {
-    main();
-}
-
 module.exports = {
-    fetchTableData,
-    compareTables,
-    generateReport,
-    saveReport
+    main
 };
