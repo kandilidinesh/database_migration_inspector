@@ -63,11 +63,11 @@ npm start
 
 The tool includes comprehensive test coverage using Jest to ensure its functionality:
 
-- **Database Connectivity**: Ensures database connections are established without errors.
-- **Data Fetching**: Validates that data fetched from the database matches expected mock data.
-- **Data Comparison**: Verifies the correctness of data comparison logic to detect discrepancies.
-- **Report Generation**: Checks if the generated report accurately reflects data discrepancies between databases.
-- **File Handling**: Confirms that reports are saved correctly to the file system.
+1. **Database Connectivity**: Ensures database connections are established without errors.
+2. **Data Fetching**: Validates that data fetched from the database matches expected mock data.
+3. **Data Comparison**: Verifies the correctness of data comparison logic to detect discrepancies.
+4. **Report Generation**: Checks if the generated report accurately reflects data discrepancies between databases.
+5. **File Handling**: Confirms that reports are saved correctly to the file system.
 
 These tests guarantee that the tool functions as intended, providing accurate insights into data discrepancies during migration processes.
 
