@@ -18,19 +18,16 @@ This Node.js script compares data between a pre-migration and a post-migration P
 - Docker (for running PostgreSQL databases in containers)
 - PostgreSQL database access for both pre-migration and post-migration datasets
 
-# Docker Setup
+## Docker Setup
 
-## To run PostgreSQL databases locally using Docker:
-
-### Pull Docker Images:
-Ensure you have Docker installed on your machine. Pull the necessary Docker images for both pre-migration and post-migration databases:
+1. Pull Docker Images: Ensure you have Docker installed on your machine. Pull the necessary Docker images for both pre-migration and post-migration databases:
 
 ```bash
 docker pull guaranteedrate/homework-pre-migration:1607545060-a7085621
 docker pull guaranteedrate/homework-post-migration:1607545060-a7085621
 ```
 
-### Run Docker Containers:
+2. Run Docker Containers:
 Start the Docker containers for the pre-migration and post-migration databases:
 
 ```bash
