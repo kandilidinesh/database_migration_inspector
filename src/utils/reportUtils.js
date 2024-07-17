@@ -1,62 +1,92 @@
 const fs = require('fs');
 const path = require('path');
 
+// Fetch all data from a specific table in the database
 async function fetchTableData(client, tableName) {
-    const query = `SELECT * FROM ${tableName}`;
-    const res = await client.query(query);
-    return res.rows;
+    try {
+        const query = `SELECT * FROM ${tableName}`;
+        const res = await client.query(query);
+        return res.rows;
+    } catch (err) {
+        console.error(`Error fetching data from table ${tableName}:`, err);
+        throw err;
+    }
 }
 
+// Compare data between pre-migration and post-migration datasets
 function compareTables(preData, postData, primaryKey) {
-    const preDataMap = new Map(preData.map(record => [record[primaryKey], record]));
-    const postDataMap = new Map(postData.map(record => [record[primaryKey], record]));
+    try {
+        const preDataMap = new Map(preData.map(record => [record[primaryKey], record]));
+        const postDataMap = new Map(postData.map(record => [record[primaryKey], record]));
 
-    const missingRecords = [];
-    const corruptedRecords = [];
-    const newRecords = [];
+        const missingRecords = [];
+        const corruptedRecords = [];
+        const newRecords = [];
 
-    preData.forEach(record => {
-        const postRecord = postDataMap.get(record[primaryKey]);
-        if (!postRecord) {
-            missingRecords.push(record);
-        } else if (JSON.stringify(record) !== JSON.stringify(postRecord)) {
-            corruptedRecords.push({ preRecord: record, postRecord });
-        }
-    });
+        // Compare preData with postData
+        preData.forEach(record => {
+            const postRecord = postDataMap.get(record[primaryKey]);
+            if (!postRecord) {
+                missingRecords.push(record);
+            } else if (JSON.stringify(record) !== JSON.stringify(postRecord)) {
+                corruptedRecords.push({ preRecord: record, postRecord });
+            }
+        });
 
-    postData.forEach(record => {
-        if (!preDataMap.has(record[primaryKey])) {
-            newRecords.push(record);
-        }
-    });
+        // Check for new records in postData
+        postData.forEach(record => {
+            if (!preDataMap.has(record[primaryKey])) {
+                newRecords.push(record);
+            }
+        });
 
-    return {
-        missingRecords,
-        corruptedRecords,
-        newRecords
-    };
+        return {
+            missingRecords,
+            corruptedRecords,
+            newRecords
+        };
+    } catch (err) {
+        console.error('Error comparing tables:', err);
+        throw err;
+    }
 }
 
+// Generate a comparison report between pre-migration and post-migration datasets
 async function generateReport(preClient, postClient, tableName) {
-    console.log(`\nComparing Table Name: ${tableName}`);
-    const preData = await fetchTableData(preClient, tableName);
-    const postData = await fetchTableData(postClient, tableName);
+    try {
+        console.log(`\nComparing Table Name: ${tableName}`);
+        // Fetch data from both databases
+        const preData = await fetchTableData(preClient, tableName);
+        const postData = await fetchTableData(postClient, tableName);
 
-    if (preData.length > 0) {
-        const primaryKey = Object.keys(preData[0])[0]; // Assuming the first column is the primary key
-        return compareTables(preData, postData, primaryKey);
+        // If preData has rows, assume the first column is the primary key
+        if (preData.length > 0) {
+            const primaryKey = Object.keys(preData[0])[0];
+            return compareTables(preData, postData, primaryKey);
+        }
+
+        return null; // Return null if no data fetched from preData
+    } catch (err) {
+        console.error('Error generating report:', err);
+        throw err;
     }
-
-    return null;
 }
 
+// Save the comparison report to a JSON file
 function saveReport(report, folder, filename) {
-    const filePath = path.join(folder, filename);
-    if (!fs.existsSync(folder)) {
-        fs.mkdirSync(folder, { recursive: true });
+    try {
+        const filePath = path.join(folder, filename);
+        // Ensure the output folder exists; create if it doesn't
+        if (!fs.existsSync(folder)) {
+            fs.mkdirSync(folder, { recursive: true });
+        }
+        // Write the report to the specified file path
+        fs.writeFileSync(filePath, JSON.stringify(report, null, 2), 'utf-8');
+        console.log(`\nReport saved to ${filePath}\n`);
+    } catch (err) {
+        console.error('Error saving report:', err);
+        throw err;
     }
-    fs.writeFileSync(filePath, JSON.stringify(report, null, 2), 'utf-8');
-    console.log(`\nReport saved to ${filePath}\n`);
 }
 
 module.exports = {
