@@ -23,8 +23,8 @@ This Node.js script compares data between a pre-migration and a post-migration P
 1. Pull Docker Images: Ensure you have Docker installed on your machine. Pull the necessary Docker images for both pre-migration and post-migration databases:
 
 ```bash
-docker pull guaranteedrate/homework-pre-migration:1607545060-a7085621
-docker pull guaranteedrate/homework-post-migration:1607545060-a7085621
+docker pull <pre-migration-container>
+docker pull <post-migration-container>
 ```
 
 2. Run Docker Containers:
@@ -32,10 +32,10 @@ Start the Docker containers for the pre-migration and post-migration databases:
 
 ```bash
 # Pre-migration database
-docker run -p 5432:5432 -e POSTGRES_PASSWORD=hehehe guaranteedrate/homework-pre-migration:1607545060-a7085621
+docker run -p 5432:5432 -e POSTGRES_PASSWORD=***** <pre-migration-container>
 
 # Post-migration database
-docker run -p 5433:5432 -e POSTGRES_PASSWORD=hahaha guaranteedrate/homework-post-migration:1607545060-a7085621
+docker run -p 5433:5432 -e POSTGRES_PASSWORD=***** <post-migration-container>
 ```
 
 ## Installation
