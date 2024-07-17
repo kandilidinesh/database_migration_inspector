@@ -20,14 +20,14 @@ This Node.js script compares data between a pre-migration and a post-migration P
 
 ## Docker Setup
 
-1. Pull Docker Images: Ensure you have Docker installed on your machine. Pull the necessary Docker images for both pre-migration and post-migration databases:
+1. **Pull Docker Images**: Ensure you have Docker installed on your machine. Pull the necessary Docker images for both pre-migration and post-migration databases:
 
 ```bash
      docker pull <pre-migration-container>
      docker pull <post-migration-container>
 ```
 
-2. Run Docker Containers:
+2. **Run Docker Containers**:
 Start the Docker containers for the pre-migration and post-migration databases:
 
 ```bash
@@ -40,18 +40,18 @@ Start the Docker containers for the pre-migration and post-migration databases:
 
 ## Installation
 
-1. Clone the repository:
+1. **Clone the repository**:
 ```bash
      git clone https://github.com/kandilidinesh/database_migration_checker.git
      cd database_migration_checker
 ```
 
-2. Install dependencies:
+2. **Install dependencies**:
 ```bash
      npm install
 ```
 
-3. Set up PostgreSQL connections in `index.js`:
+3. **Set up PostgreSQL connections in `index.js`**:
 - Update `preMigrationConfig` and `postMigrationConfig` with your database connection details.
 
 ## Usage
@@ -60,16 +60,15 @@ Run the script to perform the comparison:
 ```bash
      npm start
 ```
-
-This command will run tests using Jest and then execute the data comparison script.
+*This command will run tests using Jest and then execute the data comparison script.*
 
 ## Test Cases Covered
 
 The test suite covers the following scenarios:
 
-1. Database Connection: Validates successful connection to both pre-migration and post-migration databases.
-2. Data Comparison: Tests the accuracy of data comparison logic, including identifying missing, corrupted, and new records.
-3. Report Generation: Verifies the generation of a valid JSON report (report.json) detailing discrepancies.
+1. **Database Connection**: Validates successful connection to both pre-migration and post-migration databases.
+2. **Data Comparison**: Tests the accuracy of data comparison logic, including identifying missing, corrupted, and new records.
+3. **Report Generation**: Verifies the generation of a valid JSON report (report.json) detailing discrepancies.
 
 To run tests manually:
 
@@ -77,7 +76,7 @@ To run tests manually:
      npm test
 ```
 
-Ensure Docker containers for databases are running as described in the Docker setup section before running tests.
+*Ensure Docker containers for databases are running as described in the Docker setup section before running tests.*
 
 ## Output
 
