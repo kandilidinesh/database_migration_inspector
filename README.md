@@ -20,45 +20,42 @@ This Node.js script compares data between a pre-migration and a post-migration P
 
 ## Docker Setup
 
-1. **Pull Docker Images**: Ensure you have Docker installed on your machine. Pull the necessary Docker images for both pre-migration and post-migration databases:
+1. **Pull Docker Images**: Ensure you have Docker installed on your machine. Pull the necessary Docker images for both `pre-migration` and `post-migration` databases:
 
-```bash
+     ```bash
      docker pull <pre-migration-container>
      docker pull <post-migration-container>
-```
+     ```
 
 2. **Run Docker Containers**:
-Start the Docker containers for the pre-migration and post-migration databases:
+Start the Docker containers for the `pre-migration` and `post-migration` databases:
 
-```bash
+     ```bash
      # Pre-migration database
      docker run -p 5432:5432 -e POSTGRES_PASSWORD=***** <pre-migration-container>
 
      # Post-migration database
      docker run -p 5433:5432 -e POSTGRES_PASSWORD=***** <post-migration-container>
-```
+     ```
 
 ## Installation
 
 1. **Clone the repository**:
-```bash
+     ```bash
      git clone https://github.com/kandilidinesh/database_migration_checker.git
      cd database_migration_checker
-```
+     ```
 
 2. **Install dependencies**:
-```bash
+     ```bash
      npm install
-```
-
-3. **Set up PostgreSQL connections in `index.js`**:
-- Update `preMigrationConfig` and `postMigrationConfig` with your database connection details.
+     ```
 
 ## Usage
 
 Run the script to perform the comparison:
 ```bash
-     npm start
+npm start
 ```
 *This command will run tests using Jest and then execute the data comparison script.*
 
@@ -71,11 +68,9 @@ The test suite covers the following scenarios:
 3. **Report Generation**: Verifies the generation of a valid JSON report (report.json) detailing discrepancies.
 
 To run tests manually:
-
 ```bash
-     npm test
+npm test
 ```
-
 *Ensure Docker containers for databases are running as described in the Docker setup section before running tests.*
 
 ## Output
