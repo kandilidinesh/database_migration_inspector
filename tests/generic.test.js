@@ -6,7 +6,7 @@ const {
     compareTables,
     generateReport,
     saveReport
-} = require('../src/utils/reportUtils');
+} = require('../src/utils/report-utils');
 
 jest.mock('pg');
 

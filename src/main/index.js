@@ -1,5 +1,5 @@
 const { Client } = require('pg');
-const { generateReport, saveReport } = require('../utils/reportUtils');
+const { generateReport, saveReport } = require('../utils/report-utils');
 const { preMigrationConfig, postMigrationConfig } = require('../../lib/config');
 
 async function main() {
