@@ -1,6 +1,6 @@
 const { Client } = require('pg');
 const { generateReport, saveReport } = require('../utils/reportUtils');
-const { preMigrationConfig, postMigrationConfig } = require('../../lib/dbConfig');
+const { preMigrationConfig, postMigrationConfig } = require('../../lib/config');
 
 async function main() {
     // Create PostgreSQL clients for pre-migration and post-migration databases
