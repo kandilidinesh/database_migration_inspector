@@ -1,12 +1,10 @@
 const { Client } = require('pg');
 const fs = require('fs');
 const path = require('path');
-const {
-    fetchTableData,
-    compareTables,
-    generateReport,
-    saveReport
-} = require('../src/utils/report-utils');
+const { fetchTableData } = require('../src/db/fetchTableData');
+const { compareTables } = require('../src/services/compareTables');
+const { generateReport } = require('../src/services/generateReport');
+const { saveReport } = require('../src/utils/saveReport');
 
 jest.mock('pg');
 
