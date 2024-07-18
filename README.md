@@ -42,8 +42,8 @@ Start the Docker containers for the `pre-migration` and `post-migration` databas
 
 1. **Clone the repository**:
      ```bash
-     git clone https://github.com/kandilidinesh/database_migration_checker.git
-     cd database_migration_checker
+     git clone https://github.com/kandilidinesh/database_migration_inspector.git
+     cd database_migration_inspector
      ```
 
 2. **Install dependencies**:
