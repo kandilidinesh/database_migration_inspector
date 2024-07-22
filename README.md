@@ -8,7 +8,6 @@ This Node.js script compares data between a pre-migration and a post-migration P
 
 - **Comparison Logic**: Automatically identifies discrepancies between databases based on primary key matches and data differences.
 - **Detailed Report**: Generates a JSON report detailing missing, corrupted, and new records in the migrated dataset.
-- **Customizable**: Easily adaptable to different database schemas and migration scenarios.
 - **Testing**: Includes Jest for automated testing to ensure accuracy and reliability.
 - **Dependencies**: Utilizes `pg` for PostgreSQL connectivity.
 
@@ -80,12 +79,14 @@ npm test
 ## Output
 
 The script generates a JSON report (`report.json`) in the `output` directory, detailing:
-- Records missing in the post-migration dataset.
-- Corrupted records with data discrepancies.
-- New records introduced in the post-migration dataset.
+
+- *Total Records in Old Database*: Total number of records in the pre-migration dataset.
+- *Total Records in New Database*: Total number of records in the post-migration dataset.
+- *Missing Records*: Records that are present in the pre-migration dataset but missing in the post-migration dataset.
+- *Corrupted Records*: Records that are present in both datasets but with discrepancies in the data.
+- *New Records*: Records that are present in the post-migration dataset but were not in the pre-migration dataset.
 
 ## Assumptions
 
-- Assumes primary keys are intact and consistent between databases.
-- Assumes no intentional data deletion post-migration.
-- Assumes all discrepancies are due to migration issues.
+- *Primary Key Comparison*: Records are compared based solely on primary keys to identify matching records between the pre-migration and post-migration datasets.
+- *Common Columns for Corruption Detection*: Discrepancies in corrupted records are identified using only columns that are present in both datasets.
