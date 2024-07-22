@@ -80,13 +80,13 @@ npm test
 
 The script generates a JSON report (`report.json`) in the `output` directory, detailing:
 
-- *Total Records in Old Database*: Total number of records in the pre-migration dataset.
-- *Total Records in New Database*: Total number of records in the post-migration dataset.
-- *Missing Records*: Records that are present in the pre-migration dataset but missing in the post-migration dataset.
-- *Corrupted Records*: Records that are present in both datasets but with discrepancies in the data.
-- *New Records*: Records that are present in the post-migration dataset but were not in the pre-migration dataset.
+- **Total Records in Old Database**: Total number of records in the pre-migration dataset.
+- **Total Records in New Database**: Total number of records in the post-migration dataset.
+- **Missing Records**: Records that are present in the pre-migration dataset but missing in the post-migration dataset.
+- **Corrupted Records**: Records that are present in both datasets but with discrepancies in the data.
+- **New Records**: Records that are present in the post-migration dataset but were not in the pre-migration dataset.
 
 ## Assumptions
 
-- *Primary Key Comparison*: Records are compared based solely on primary keys to identify matching records between the pre-migration and post-migration datasets.
-- *Common Columns for Corruption Detection*: Discrepancies in corrupted records are identified using only columns that are present in both datasets.
+- **Primary Key Comparison**: Records are compared based solely on primary keys to identify matching records between the pre-migration and post-migration datasets.
+- **Common Columns for Corruption Detection**: Discrepancies in corrupted records are identified using only columns that are present in both datasets.
